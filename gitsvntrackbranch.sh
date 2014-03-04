@@ -15,7 +15,8 @@ then
      git config --add svn-remote.dev-$1.fetch :refs/remotes/git-svn-dev-$1
 
      git svn fetch dev-$1
-     git branch --track dev-$1 git-svn-dev-$1
+     #git branch --track dev-$1 git-svn-dev-$1
+     git checkout -b $1 refs/remotes/git-svn-dev-$1
      git checkout dev-$1
      git svn rebase
 fi
