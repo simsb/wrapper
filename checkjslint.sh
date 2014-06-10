@@ -3,7 +3,7 @@
 #
 currentBranch=$(git branch | sed --quiet 's/* \(.*\)/\1/p')
 activeTrackingBranch="$(cat ~/.gitsvnactivetrackingbranch)";
-
+echo "current branch $currentBranch tracking branch $activeTrackingBranch"
 if [ -z "$activeTrackingBranch" ]
 then
     echo "Run gitmaster to set the active tracking branch"
@@ -22,9 +22,9 @@ then
     exit
 fi
 git checkout $activeTrackingBranch
-ant jslint > ~/jslint_$activeTrackingBranch
+ant jslint > $HOME/lint_active_tracking_branch 
 git checkout $currentBranch
-ant jslint > ~/jslint_$currentBranch
+ant jslint > $HOME/lint_current_branch 
 
-diff ~/jslint_$activeTrackingBranch ~/jslint_$currentBranch
+diff $HOME/lint_active_tracking_branch $HOME/lint_current_branch
 

@@ -22,9 +22,9 @@ then
     exit
 fi
 git checkout $activeTrackingBranch
-ant jarch-mosaic > ~/jarch_$activeTrackingBranch
+ant jarch-mosaic > ~/jarch_activeTrackingBranch
 git checkout $currentBranch
-ant jarch-mosaic > ~/jarch_$currentBranch
+ant jarch-mosaic > ~/jarch_currentBranch
 
-diff ~/jarch_$activeTrackingBranch ~/jarch_$currentBranch
+diff ~/jarch_activeTrackingBranch ~/jarch_currentBranch
 
